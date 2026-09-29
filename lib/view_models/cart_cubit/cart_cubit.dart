@@ -24,23 +24,16 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  // داخل cart_cubit.dart
-
   Future<void> decrementCounter(AddToCartModel cartItem, [int? initialValue]) async {
-    // إحضار الكمية الحالية الخاصة بهذا المنتج تحديداً
     int currentQuantity = initialValue ?? cartItem.quantity;
 
-    // يمنع التخفيض إذا كانت الكمية 1 أو أقل
     if (currentQuantity <= 1) return;
-
     currentQuantity--;
 
     try {
       final updatedCartItem = cartItem.copyWith(quantity: currentQuantity);
       final currentUser = authServices.currentUser();
       await cartServices.setCartItem(currentUser!.uid, updatedCartItem);
-
-      // إعادة جلب القائمة وتحديث الـ State الكلية للسلة
       final cartItems = await cartServices.fetchCartItems(currentUser.uid);
       final newSubtotal = _subtotal(cartItems);
 
