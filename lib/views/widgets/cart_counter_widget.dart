@@ -16,23 +16,6 @@ class CartCounterWidget extends StatelessWidget {
     this.initialValue,
   });
 
-  // Future<void> _decrementCounter(BuildContext context) async {
-  //   final cubit = BlocProvider.of<CartCubit>(context);
-  //   if (initialValue != null) {
-  //     await cubit.decrementCounter(cartItem, initialValue);
-  //   } else {
-  //     await cubit.decrementCounter(cartItem);
-  //   }
-  // }
-
-  // Future<void> _incrementCounter(BuildContext context) async {
-  //   final cubit = BlocProvider.of<CartCubit>(context);
-  //   if (initialValue != null) {
-  //     await cubit.incrementCounter(cartItem, initialValue);
-  //   } else {
-  //     await cubit.incrementCounter(cartItem);
-  //   }
-  // }
   Future<void> _decrementCounter(BuildContext context) async {
     final cubit = BlocProvider.of<CartCubit>(context);
     await cubit.decrementCounter(cartItem, value);
