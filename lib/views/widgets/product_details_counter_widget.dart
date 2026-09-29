@@ -29,7 +29,7 @@ class ProductDetailsCounterWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.grey2,
         borderRadius: BorderRadius.all(Radius.circular(40)),
-      ), // BoxDecoration
+      ),
       child: Padding(
         padding: const EdgeInsetsGeometry.symmetric(horizontal: 8, vertical: 4),
         child: Row(
@@ -37,15 +37,15 @@ class ProductDetailsCounterWidget extends StatelessWidget {
             IconButton(
               onPressed: value > 1 ? () => _decrementCounter(context) : null,
               icon: const Icon(Icons.remove),
-            ), // IconButton
+            ),
             Text(value.toString()),
             IconButton(
               onPressed: () => _incrementCounter(context),
               icon: const Icon(Icons.add),
-            ), // IconButton
+            ),
           ],
-        ), // Row
-      ), // Padding
-    ); // DecoratedBox
+        ),
+      ),
+    );
   }
 }

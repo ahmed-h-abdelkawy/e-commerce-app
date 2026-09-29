@@ -33,31 +33,23 @@ class CategoryTabView extends StatelessWidget {
                       height: 120,
                       child: Stack(
                         children: [
-                          // 1. الصورة الخلفية
                           Positioned.fill(
-                            child: Image.asset(
-                              category.imgPath,
-                              fit: BoxFit.cover, // عشان تملا الكارد بالكامل
-                            ), // Image.asset
-                          ), // Positioned.fill
-                          // 2. طبقة تدرج لوني (Gradient) فوق الصورة عشان تخلي الكلام واضح مهما كانت ألوان الصورة
+                            child: Image.asset(category.imgPath, fit: BoxFit.cover),
+                          ),
                           Positioned.fill(
                             child: DecoratedBox(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.black.withValues(
-                                      alpha: 0.6,
-                                    ), // لون غامق تحت النص
+                                    Colors.black.withValues(alpha: 0.6),
                                     Colors.transparent,
                                   ],
                                   begin: Alignment.bottomCenter,
                                   end: Alignment.topCenter,
-                                ), // LinearGradient
-                              ), // BoxDecoration
-                            ), // DecoratedBox
-                          ), // Positioned.fill
-                          // 3. النصوص
+                                ),
+                              ),
+                            ),
+                          ),
                           Positioned(
                             top: 32,
                             left: isTextOnLeft ? 16 : null,
@@ -71,33 +63,31 @@ class CategoryTabView extends StatelessWidget {
                                   category.name,
                                   style: Theme.of(context).textTheme.titleLarge!
                                       .copyWith(
-                                        color: Colors.white, // تثبيت لون النص أبيض
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                       ),
-                                ), // Text
+                                ),
                                 Text(
                                   '${category.productsCount} Product',
                                   style: Theme.of(context).textTheme.titleMedium!
                                       .copyWith(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.9,
-                                        ), // أبيض شفاف قليلا لتعدد
+                                        color: Colors.white.withValues(alpha: 0.9),
                                         fontWeight: FontWeight.w500,
                                       ),
-                                ), // Text
+                                ),
                               ],
-                            ), // Column
-                          ), // Positioned
+                            ),
+                          ),
                         ],
-                      ), // Stack
-                    ), // SizedBox
-                  ), // DecoratedBox
-                ), // ClipRRect
-              ), // InkWell
-            ); // Padding
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
           },
           itemCount: categories.length,
-        ); // ListView.builder
+        );
       },
     );
   }

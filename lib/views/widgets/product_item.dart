@@ -86,8 +86,8 @@ class ProductItem extends StatelessWidget {
                 ),
               ),
             ),
-          ], // قفلة الـ Stack children
-        ), // قفلة الـ Stack
+          ],
+        ),
         const SizedBox(height: 8),
         Text(
           productItem.name,
@@ -107,7 +107,7 @@ class ProductItem extends StatelessWidget {
             context,
           ).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600),
         ),
-      ], // قفلة الـ Column children
-    ); // قفلة الـ Column
+      ],
+    );
   }
 }

@@ -21,13 +21,13 @@ class CartItemWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.grey2,
               borderRadius: BorderRadius.circular(16),
-            ), // BoxDecoration
+            ),
             child: CachedNetworkImage(
               imageUrl: cartItem.product.imgUrl,
               height: 120,
               width: 100,
-            ), // CachedNetworkImage
-          ), // DecoratedBox
+            ),
+          ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -47,10 +47,10 @@ class CartItemWidget extends StatelessWidget {
                       TextSpan(
                         text: cartItem.size.name,
                         style: Theme.of(context).textTheme.titleMedium,
-                      ), // TextSpan
+                      ),
                     ],
-                  ), // TextSpan
-                ), // Text.rich
+                  ),
+                ),
                 const SizedBox(height: 8),
                 BlocBuilder<CartCubit, CartState>(
                   bloc: cubit,
@@ -64,7 +64,7 @@ class CartItemWidget extends StatelessWidget {
                       return const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [CircularProgressIndicator.adaptive()],
-                      ); // Row
+                      );
                     }
                     if (state is QuantityCounterError) {
                       return Row(
@@ -74,35 +74,31 @@ class CartItemWidget extends StatelessWidget {
                             child: Text(
                               state.message,
                               style: const TextStyle(color: Colors.red),
-                            ), // Text
-                          ), // Expanded
+                            ),
+                          ),
                         ],
-                      ); // Row
+                      );
                     }
                     if (state is QuantityCounterLoaded) {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CartCounterWidget(
-                            value: state.value,
-                            cartItem: cartItem,
-                          ), // CartCounterWidget
+                          CartCounterWidget(value: state.value, cartItem: cartItem),
                           Text(
                             '\$${(state.value * cartItem.product.price).toStringAsFixed(1)}',
                             style: Theme.of(context).textTheme.headlineSmall!
                                 .copyWith(fontWeight: FontWeight.w800),
-                          ), // Text
+                          ),
                         ],
-                      ); // Row
+                      );
                     }
-                    // الحالة الافتراضية (لسه مفيش state خاص بالكاونتر لغاية دلوقتي)
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CartCounterWidget(
                           value: cartItem.quantity,
                           cartItem: cartItem,
-                        ), // CartCounterWidget
+                        ),
                         Text(
                           '\$${(cartItem.quantity * cartItem.product.price).toStringAsFixed(1)}',
                           style: Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -110,14 +106,14 @@ class CartItemWidget extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ); // Row
+                    );
                   },
-                ), // BlocBuilder
+                ),
               ],
-            ), // Column
-          ), // Expanded
+            ),
+          ),
         ],
-      ), // Row
-    ); // Padding
+      ),
+    );
   }
 }
