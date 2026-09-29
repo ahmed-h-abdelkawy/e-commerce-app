@@ -155,7 +155,7 @@ class _LoginPageState extends State<RegisterPage> {
                                   'https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png',
                               ontap: () async =>
                                   await cubit.authenticateWithGoogle(),
-                            ); // SocialMediaButton
+                            );
                           },
                         ), // BlocConsumer
                         const SizedBox(height: 12),
