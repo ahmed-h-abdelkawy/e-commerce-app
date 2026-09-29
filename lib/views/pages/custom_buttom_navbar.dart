@@ -109,10 +109,6 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
         },
         stateManagement: false,
         tabs: _tabs(),
-        // screenTransitionAnimation: const ScreenTransitionAnimation(
-        //   curve: Curves.linear,
-        //   duration: Duration(seconds: 1),
-        // ),
         navBarBuilder: (navBarConfig) => Style2BottomNavBar(
           navBarConfig: navBarConfig,
           navBarDecoration: const NavBarDecoration(color: Colors.white),
