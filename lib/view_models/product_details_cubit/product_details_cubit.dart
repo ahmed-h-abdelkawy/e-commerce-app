@@ -20,16 +20,11 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     try {
       final currentUser = authServices.currentUser();
       final selectedProduct = await productDetailsServices.fetchProductDetails(id);
-
-      // نجيب المفضلة عشان نعرف المنتج ده جواها ولا لأ
       final favoriteProducts = await productDetailsServices.fetchFavoriteProducts(
         currentUser!.uid,
       );
       final isFavorite = favoriteProducts.any((item) => item.id == id);
-
-      // نعمل نسخة جديدة من المنتج بالقيمة الصحيحة للـ isFavorite
       final finalProduct = selectedProduct.copyWith(isFavorite: isFavorite);
-
       emit(ProductDetailsLoaded(product: finalProduct));
     } catch (e) {
       emit(ProductDetailsError(e.toString()));
@@ -56,7 +51,6 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
           product: product,
         );
       }
-      // بنبعت عكس الحالة لأننا غيرناها خلاص بنجاح
       emit(SetFavoriteSuccess(isFavorite: !isFavorite, productId: product.id));
     } catch (e) {
       emit(SetFavoriteError(e.toString(), product.id));
