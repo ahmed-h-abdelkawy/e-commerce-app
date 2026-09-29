@@ -57,15 +57,10 @@ class ProductDetailsPage extends StatelessWidget {
                         ),
                       );
                     }
-
-                    // بنفترض إن الحالة المبدئية هي اللي جاية مع المنتج
                     bool isFav = product.isFavorite;
-
-                    // لو الـ State اتغيرت لنجاح، بناخد القيمة الجديدة
                     if (state is SetFavoriteSuccess) {
                       isFav = state.isFavorite;
                     }
-
                     return IconButton(
                       onPressed: () async => await cubit.setFavorite(product),
                       icon: Icon(
@@ -186,11 +181,9 @@ class ProductDetailsPage extends StatelessWidget {
                                                 context,
                                               ).selectSize(size),
                                           child: Container(
-                                            width:
-                                                42, // اختر المقاس الثابت المناسب لك (مثلاً 40 أو 42 أو 45)
+                                            width: 42,
                                             height: 42,
-                                            alignment: Alignment
-                                                .center, // لضبط النص في سنتر الدائرة تماماً
+                                            alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               color:
