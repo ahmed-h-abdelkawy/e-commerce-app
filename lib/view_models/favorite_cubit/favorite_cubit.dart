@@ -22,14 +22,23 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     }
   }
 
+  Future<void> addFavorite(ProductItemModel product) async {
+    try {
+      final currentUser = authServices.currentUser();
+      await favoriteServices.addFavorite(currentUser!.uid, product);
+      await getFavoriteProducts();
+    } catch (e) {
+      emit(FavoriteError(e.toString()));
+    }
+  }
+
   Future<void> removeFavorite(String productId) async {
     emit(FavoriteRemoving(productId));
     try {
       final currentUser = authServices.currentUser();
       await favoriteServices.removeFavorite(currentUser!.uid, productId);
       emit(FavoriteRemoved(productId));
-      final favoriteProducts = await favoriteServices.getFavorites(currentUser.uid);
-      emit(FavoriteLoaded(favoriteProducts));
+      await getFavoriteProducts();
     } catch (e) {
       emit(FavoriteRemoveError(e.toString()));
     }

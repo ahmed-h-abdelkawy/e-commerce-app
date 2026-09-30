@@ -10,10 +10,6 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final favoriteCubit = BlocProvider.of<FavoriteCubit>(context);
 
-    if (favoriteCubit.state is FavoriteInitial) {
-      favoriteCubit.getFavoriteProducts();
-    }
-
     return BlocListener<FavoriteCubit, FavoriteState>(
       listenWhen: (previous, current) => current is FavoriteRemoveError,
       listener: (context, state) {

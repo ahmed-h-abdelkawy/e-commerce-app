@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/utils/app_colors.dart';
+import 'package:e_commerce_app/view_models/favorite_cubit/favorite_cubit.dart';
 import 'package:e_commerce_app/views/pages/cart_page.dart';
 import 'package:e_commerce_app/views/pages/favorites_page.dart';
 import 'package:e_commerce_app/views/pages/home_page.dart';
 import 'package:e_commerce_app/views/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomButtomNavbar extends StatefulWidget {
   const CustomButtomNavbar({super.key});
@@ -106,6 +108,9 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
           setState(() {
             currentIndex = index;
           });
+          if (index == 2) {
+            context.read<FavoriteCubit>().getFavoriteProducts();
+          }
         },
         stateManagement: false,
         tabs: _tabs(),
